@@ -1,4 +1,4 @@
-import * as VDF from "@node-steam/vdf"
+import { stringify } from "@node-steam/vdf"
 
 export type GSIEntryValue = 0 | 1;
 
@@ -67,7 +67,7 @@ const generateGSI = <T extends string>(name: T, uri: string, token = '', data: P
         json: {
             [name]: gsi
         },
-        vdf: VDF.stringify(gsi)
+        vdf: stringify({ [name]: gsi })
     }) as { json: { [P in T]: GSI }, vdf: string }
 };
 
